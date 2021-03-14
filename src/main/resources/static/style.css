@@ -1,0 +1,132 @@
+:root {
+    --color-body: black;
+    --bgColor-body: gray;
+    --color-headerAndFooter: skyblue;
+    --bgColor-headerAndFooter: white;
+    --fontSize-header: 1.5em;
+}
+/* All */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+/* Html */
+html {
+    width: 100%;
+    height: 100%;
+}
+/* Body */
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    font-size: 3vh;
+    font-family: Georgia, serif;
+    line-height: 1;
+    color: var(--color-body);
+    background-color: var(--bgColor-body);
+}
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: var(--bgColor-body);
+}
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+    background-color: var(--bgColor-headerAndFooter);
+}
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-headerAndFooter);
+}
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: deepskyblue;
+}
+/* Main */
+main {
+    flex: auto;
+    padding: 0.5em 1em;
+    overflow-y: auto;
+}
+main.active-scroll {
+    padding-right: 0.5em;
+}
+/* Header and footer */
+header, footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    flex: 0 1 auto;
+    font-weight: bold;
+    color: var(--color-headerAndFooter);
+    background-color: var(--bgColor-headerAndFooter);
+    padding: 0.5em 1em;
+}
+header > h1 {
+    font-size: var(--fontSize-header);
+}
+header > .btn-add {
+    width: var(--fontSize-header);
+    font-size: inherit;
+    cursor: pointer;
+    background: url("images/plus.svg") center /cover no-repeat content-box padding-box transparent;
+}
+/* table */
+main > table {
+    width: 100%;
+    border-spacing: 0;
+}
+table td {
+    padding: 0.5em 0;
+}
+table tr:hover {
+    background: var(--color-headerAndFooter);
+}
+table .city-name {
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+table .city-info {
+    width: auto;
+    padding: 0 1em;
+    overflow-wrap: anywhere;
+}
+table .settings {
+    width: 2.5em;
+    text-align: right;
+}
+.space-nowrap {
+    white-space: nowrap;
+}
+.settings > a, .settings > button {
+    width: 1em;
+    height: 1em;
+}
+.edit-city {
+    font-size: inherit;
+    cursor: pointer;
+    background: url("images/edit.svg") center /cover no-repeat content-box padding-box transparent;
+}
+.del-city {
+    display: inline-block;
+    background: url("images/delete.svg") center /cover no-repeat content-box padding-box transparent;
+}
+/* Footer */
+footer > a {
+    width: 1em;
+    height: 1em;
+}
+.telegram-bot {
+    background: url("images/telegram.svg") center /cover no-repeat content-box padding-box transparent;
+}
+.github {
+    background: url("images/github.svg") center /cover no-repeat content-box padding-box transparent;
+}
+button:hover, a:hover {
+    transform: scale(1.25);
+}
