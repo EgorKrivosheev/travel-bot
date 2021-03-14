@@ -1,1 +1,1 @@
-web: java -jar target/travel-bot-*.jar
+web: java -jar --port $PORT target/travel-bot-*.jar
