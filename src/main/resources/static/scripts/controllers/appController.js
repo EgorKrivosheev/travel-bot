@@ -26,7 +26,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         }
         // Load
         $scope.getCities();
-        setInterval($scope.getCities, 15000);
+        setInterval($scope.getCities, 25000);
         // If main have scroll add class active-scroll(padding right less on 0.5em)
         $scope.isActiveScroll = function () {
             if (main.clientHeight < main.scrollHeight) {
@@ -71,6 +71,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
+            $scope.getCities();
             $scope.cityForm = { "name" : "", "info" : "" }
         }
         $scope.editCity = function () {
@@ -80,6 +81,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { id: $scope.cityForm.id, name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
+            $scope.getCities();
         }
         $scope.deleteCity = function (id) {
             let req = {
@@ -88,6 +90,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { id: id }
             }
             $scope.cityApi(req);
+            $scope.getCities();
         }
         $scope.cityApi = function cityApi(url) {
             cityApiService.cityApi(url)

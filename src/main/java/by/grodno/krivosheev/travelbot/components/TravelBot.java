@@ -37,8 +37,12 @@ public class TravelBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage message = new SendMessage();
             message.setChatId(update.getMessage().getChatId().toString());
-            // Return info
-            message.setText(cityService.getInfo(update.getMessage().getText()));
+            String msgText = update.getMessage().getText();
+            if (msgText.equals("/start")) {
+                message.setText("Напиши город и узнай информацию о нём.");
+            } else {
+                message.setText(cityService.getInfo(msgText));
+            }
             try {
                 execute(message);
             } catch (TelegramApiException e) {

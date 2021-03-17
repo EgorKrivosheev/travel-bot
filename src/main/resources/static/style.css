@@ -135,7 +135,7 @@ footer {
 /* Table */
 main > table {
     width: 100%;
-    border-spacing: 0;
+    border-spacing: 0 0.5em;
 }
 table td {
     padding: 0.5em 0;
@@ -153,6 +153,7 @@ table .city-name {
     text-align: left;
 }
 table .city-info {
+    text-align: justify;
     width: 65%;
     padding: 0 1em;
 }
@@ -231,6 +232,7 @@ button:focus {
     background-color: var(--color-headerAndFooter);
 }
 .form textarea {
+    text-align: justify;
     height: 30%;
     resize: none;
     padding: 1em;
