@@ -190,7 +190,7 @@ footer .earth {
     text-align: center;
 }
 .telegram-bot {
-    background: url("images/telegram.svg") center /cover no-repeat content-box padding-box transparent;
+    background: url("images/icons/favicon.svg") center /cover no-repeat content-box padding-box transparent;
 }
 .github {
     background: url("images/github.svg") center /cover no-repeat content-box padding-box transparent;

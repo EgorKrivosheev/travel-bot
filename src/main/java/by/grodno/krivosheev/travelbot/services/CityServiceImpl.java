@@ -57,6 +57,14 @@ public class CityServiceImpl implements CityService {
         return cityRepository.getById(id);
     }
 
+    @Override
+    public String getInfo(String name) {
+        if (!cityRepository.existsByName(name)) {
+            return "Информация о городе с таким названием не найдена!";
+        }
+        return cityRepository.getByName(name).getInfo();
+    }
+
     private void existById(int id) {
         if (!cityRepository.existsById(id)) {
             throw new EntityNotFoundException("Не найден город под №" + id);

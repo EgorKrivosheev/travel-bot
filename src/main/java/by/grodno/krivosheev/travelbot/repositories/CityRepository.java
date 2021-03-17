@@ -8,6 +8,8 @@ public interface CityRepository extends JpaRepository<CityEntity, Integer> {
 
     CityEntity getById(int id);
 
-    boolean existsByName(String Name);
+    CityEntity getByName(String name);
+
+    boolean existsByName(String name);
 
 }

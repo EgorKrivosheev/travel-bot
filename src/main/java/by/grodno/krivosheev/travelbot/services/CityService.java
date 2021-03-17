@@ -46,4 +46,11 @@ public interface CityService {
      */
     CityEntity getCity(int id);
 
+    /**
+     * City information by city name
+     * @param name String
+     * @return String
+     */
+    String getInfo(String name);
+
 }
