@@ -3,7 +3,8 @@
     --bgColor-body: gray;
     --color-headerAndFooter: skyblue;
     --bgColor-headerAndFooter: white;
-    --fontSize-header: 1.5em;
+    --fontSize-header: 1.75em;
+    --border-radius: 15px;
 }
 /* All */
 * {
@@ -24,26 +25,76 @@ body {
     flex-flow: column nowrap;
     width: 100%;
     height: 100%;
-    font-size: 3vh;
+    font-size: 2.25vh;
     font-family: Georgia, serif;
     line-height: 1;
     color: var(--color-body);
     background-color: var(--bgColor-body);
+}
+/* Messages */
+.wrap-messages {
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+    left: 1em;
+    bottom: 3em;
+    width: auto;
+    max-width: 45%;
+    z-index: 1;
+}
+.message {
+    position: relative;
+    display: inline-block;
+    max-height: 3em;
+    background-color: var(--bgColor-headerAndFooter);
+    padding: 0.25em;
+    margin: 0.25em 0;
+    border: 0.25em solid var(--color-headerAndFooter);
+    border-radius: var(--border-radius);
+    opacity: 0;
+}
+.message.visible {
+    animation: visible 5s linear 1;
+}
+@keyframes visible {
+    from {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.message > .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.message > .btn-cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.75em;
+    margin-right: -0.5em;
+    background: url("images/cancel.svg") center /cover no-repeat content-box padding-box transparent;
 }
 /* Custom scrollbar */
 .custom-scroll::-webkit-scrollbar {
     width: 0.5em;
     background-color: var(--bgColor-body);
 }
-/* Track */
 .custom-scroll::-webkit-scrollbar-track {
     background-color: var(--bgColor-headerAndFooter);
 }
-/* Handle */
 .custom-scroll::-webkit-scrollbar-thumb {
     background: var(--color-headerAndFooter);
 }
-/* Handle on hover */
 .custom-scroll::-webkit-scrollbar-thumb:hover {
     background: deepskyblue;
 }
@@ -72,11 +123,13 @@ header > h1 {
 }
 header > .btn-add {
     width: var(--fontSize-header);
-    font-size: inherit;
-    cursor: pointer;
     background: url("images/plus.svg") center /cover no-repeat content-box padding-box transparent;
+    z-index: 1;
 }
-/* table */
+footer {
+    align-items: center;
+}
+/* Table */
 main > table {
     width: 100%;
     border-spacing: 0;
@@ -84,42 +137,53 @@ main > table {
 table td {
     padding: 0.5em 0;
 }
-table tr:hover {
+table tbody tr:hover {
     background: var(--color-headerAndFooter);
 }
-table .city-name {
+table .city-id {
+    width: 5%;
     text-align: left;
-    overflow-wrap: anywhere;
+    padding-right: 1em;
+}
+table .city-name {
+    width: 15%;
+    text-align: left;
 }
 table .city-info {
-    width: auto;
+    width: 65%;
     padding: 0 1em;
+}
+.city-name, .city-info {
     overflow-wrap: anywhere;
 }
 table .settings {
-    width: 2.5em;
+    min-width: 2.5em;
+    width: 5%;
     text-align: right;
 }
-.space-nowrap {
+thead th {
     white-space: nowrap;
 }
-.settings > a, .settings > button {
+.settings > button {
     width: 1em;
     height: 1em;
 }
-.edit-city {
-    font-size: inherit;
-    cursor: pointer;
+.btn-edit {
     background: url("images/edit.svg") center /cover no-repeat content-box padding-box transparent;
 }
-.del-city {
-    display: inline-block;
+.btn-delete {
     background: url("images/delete.svg") center /cover no-repeat content-box padding-box transparent;
+}
+tbody td {
+    user-select: text;
 }
 /* Footer */
 footer > a {
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
+}
+footer .earth {
+    text-align: center;
 }
 .telegram-bot {
     background: url("images/telegram.svg") center /cover no-repeat content-box padding-box transparent;
@@ -127,6 +191,58 @@ footer > a {
 .github {
     background: url("images/github.svg") center /cover no-repeat content-box padding-box transparent;
 }
+/* Hover */
+button {
+    font: inherit;
+    cursor: pointer;
+}
 button:hover, a:hover {
     transform: scale(1.25);
+}
+button:focus {
+    transform: scale(1.25);
+}
+/* Add form */
+.add-form {
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 2.5em;
+    background-color: rgba(128, 128, 128, 0.75);
+}
+.add-form input {
+    padding: 1em 1em 1em 3em;
+    background-image: url("images/city.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.add-form input:focus {
+    background-color: var(--color-headerAndFooter);
+}
+.add-form textarea {
+    height: 30%;
+    resize: none;
+    padding: 1em;
+}
+.add-form input, .add-form textarea {
+    width: 100%;
+    font: inherit;
+    margin: 1em 0;
+    border-radius: var(--border-radius);
+}
+.add-form .btn-submit {
+    padding: 0.5em;
+    margin: 1em 0;
+    background-color: var(--color-headerAndFooter);
+    border-radius: var(--border-radius);
+}
+.none {
+    display: none;
+    opacity: 0;
 }
