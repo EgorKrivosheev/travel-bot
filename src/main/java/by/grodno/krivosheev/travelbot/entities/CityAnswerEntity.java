@@ -2,6 +2,9 @@ package by.grodno.krivosheev.travelbot.entities;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * This class it format json the response a server
+ */
 public class CityAnswerEntity extends AnswerEntity {
     private final CityEntity city;
 

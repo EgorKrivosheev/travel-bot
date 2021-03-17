@@ -12,9 +12,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Component
 public class TravelBot extends TelegramLongPollingBot {
-    @Value("${bot_name}")
+    @Value("${BOT_NAME}")
     private String botName;
-    @Value("${bot_name}")
+    @Value("${BOT_TOKEN}")
     private String botToken;
     private final CityService cityService;
 

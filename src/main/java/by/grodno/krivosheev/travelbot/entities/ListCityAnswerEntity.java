@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
+/**
+ * This class it format json the response a server
+ */
 public class ListCityAnswerEntity extends AnswerEntity {
     private final List<CityEntity> cities;
 
