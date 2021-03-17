@@ -27,7 +27,7 @@ body {
     height: 100%;
     font-size: 2.25vh;
     font-family: Georgia, serif;
-    line-height: 1;
+    line-height: 1.25;
     color: var(--color-body);
     background-color: var(--bgColor-body);
 }
@@ -37,15 +37,15 @@ body {
     display: flex;
     flex-flow: column nowrap;
     left: 1em;
-    bottom: 3em;
+    bottom: 2.75em;
     width: auto;
     max-width: 45%;
-    z-index: 1;
+    z-index: 9;
 }
 .message {
     position: relative;
     display: inline-block;
-    max-height: 3em;
+    max-height: 3.5em;
     background-color: var(--bgColor-headerAndFooter);
     padding: 0.25em;
     margin: 0.25em 0;
@@ -122,9 +122,12 @@ header > h1 {
     font-size: var(--fontSize-header);
 }
 header > .btn-add {
-    width: var(--fontSize-header);
+    width: 2.25em;
     background: url("images/plus.svg") center /cover no-repeat content-box padding-box transparent;
     z-index: 1;
+}
+.btn-add.open-form {
+    background-image: url("images/cancel.svg");
 }
 footer {
     align-items: center;
@@ -157,7 +160,7 @@ table .city-info {
     overflow-wrap: anywhere;
 }
 table .settings {
-    min-width: 2.5em;
+    min-width: 3em;
     width: 5%;
     text-align: right;
 }
@@ -165,8 +168,9 @@ thead th {
     white-space: nowrap;
 }
 .settings > button {
-    width: 1em;
-    height: 1em;
+    width: 1.25em;
+    height: 1.25em;
+    outline: 0;
 }
 .btn-edit {
     background: url("images/edit.svg") center /cover no-repeat content-box padding-box transparent;
@@ -203,7 +207,7 @@ button:focus {
     transform: scale(1.25);
 }
 /* Add form */
-.add-form {
+.form {
     position: fixed;
     display: flex;
     flex-flow: column nowrap;
@@ -215,28 +219,29 @@ button:focus {
     bottom: 0;
     padding: 2.5em;
     background-color: rgba(128, 128, 128, 0.75);
+    z-index: 1;
 }
-.add-form input {
+.form input {
     padding: 1em 1em 1em 3em;
     background-image: url("images/city.svg");
     background-size: contain;
     background-repeat: no-repeat;
 }
-.add-form input:focus {
+.form input:focus {
     background-color: var(--color-headerAndFooter);
 }
-.add-form textarea {
+.form textarea {
     height: 30%;
     resize: none;
     padding: 1em;
 }
-.add-form input, .add-form textarea {
+.form input, .form textarea {
     width: 100%;
     font: inherit;
     margin: 1em 0;
     border-radius: var(--border-radius);
 }
-.add-form .btn-submit {
+.form .btn-submit {
     padding: 0.5em;
     margin: 1em 0;
     background-color: var(--color-headerAndFooter);

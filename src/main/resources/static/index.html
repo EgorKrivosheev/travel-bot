@@ -29,16 +29,19 @@
     </div>
 </div>
 
-<div class="add-form none" ng-class="isVisibleAddForm">
-    <input title="Введите название города" type="text" placeholder="Название города" ng-model="newCity.name">
-    <textarea title="Введите информацию по городу" class="custom-scroll" placeholder="Информация по городу" ng-model="newCity.info"></textarea>
-    <button class="btn-submit" ng-click="addCity();">Добавить</button>
+<div class="form none" ng-class="isVisibleForm">
+    <input title="Введите название города" type="text" placeholder="Название города" ng-model="cityForm.name">
+    <textarea title="Введите информацию по городу" class="custom-scroll" placeholder="Информация по городу" ng-model="cityForm.info"></textarea>
+    <div>
+        <button class="btn-submit" ng-click="addCity();" ng-if="!isVisibleBtnForm">Добавить</button>
+        <button class="btn-submit" ng-click="editCity();" ng-if="isVisibleBtnForm">Сохранить</button>
+    </div>
 </div>
 
 
     <header>
         <h1>Travel bot</h1>
-        <button title="{{ titleAddBtn }}" class="btn-add" ng-click="addForm();"></button>
+        <button title="{{ titleAddBtn }}" class="btn-add" ng-class="classOpenForm" ng-click="openAddForm();"></button>
     </header>
 
     <main id="main" class="custom-scroll" ng-class="isActiveScroll();">
@@ -57,7 +60,7 @@
                 <td class="city-name" ng-bind="city.name"></td>
                 <td class="city-info" ng-bind="city.info"></td>
                 <td class="settings">
-                    <button title="Изменить информацию" class="btn-edit"></button>
+                    <button title="Изменить информацию" class="btn-edit" ng-click="openEditForm(city);"></button>
                     <button title="Удалить данные" class="btn-delete" ng-click="deleteCity(city.id);"></button>
                 </td>
             </tr>

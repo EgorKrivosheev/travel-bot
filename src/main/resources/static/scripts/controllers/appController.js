@@ -2,9 +2,9 @@
 
 _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootScope',
     function ($scope, cityApiService, $rootScope) {
-        $scope.isVisibleAddForm = 'none';
+        $scope.isVisibleForm = 'none';
         $scope.titleAddBtn = "Открыть форму добавления";
-        $scope.newCity = {
+        $scope.cityForm = {
             "name" : "",
             "info" : ""
         };
@@ -18,13 +18,15 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                     $scope.addMessage(success.data.message);
                 },
                 function (error) {
-                    $scope.addMessage(error.data.message);
+                    if (error.data.message !== "") {
+                        $scope.addMessage(error.data.message);
+                    }
                 }
             );
         }
         // Load
         $scope.getCities();
-        setInterval($scope.getCities, 10000);
+        setInterval($scope.getCities, 15000);
         // If main have scroll add class active-scroll(padding right less on 0.5em)
         $scope.isActiveScroll = function () {
             if (main.clientHeight < main.scrollHeight) {
@@ -42,18 +44,40 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 }, 5000);
             }
         }
-        $scope.addForm = function () {
-            $scope.isVisibleAddForm = $scope.isVisibleAddForm === 'none' ? '' : 'none';
-            $scope.titleAddBtn = $scope.isVisibleAddForm ?
-                "Открыть форму добавления" : "Закрыть форму добавления";
-            $scope.addMessage($scope.isVisibleAddForm ?
-                'Закрыта форма для добавления!' : 'Открыта форма для добавления!');
+        $scope.openForm = function (str) {
+            $scope.isVisibleForm = $scope.isVisibleForm === 'none' ? '' : 'none';
+            $scope.isVisibleBtnForm = str === 'изменения';
+            $scope.titleAddBtn = $scope.isVisibleForm ?
+                'Открыть форму ' + str : 'Закрыть форму ' + str;
+            $scope.classOpenForm = $scope.isVisibleForm ?
+                '' : 'open-form';
+            $scope.addMessage($scope.isVisibleForm ?
+                'Закрыта форма для '+ str +'!' : 'Открыта форма для ' + str +'!');
+        }
+        $scope.openAddForm = function () {
+            $scope.cityForm = {
+                "name" : "", "info" : ""
+            }
+            $scope.openForm('добавления');
+        }
+        $scope.openEditForm = function (city) {
+            $scope.cityForm = city;
+            $scope.openForm('изменения');
         }
         $scope.addCity = function () {
             let req = {
                 method: 'POST',
                 url: 'city/add',
-                params: { name: $scope.newCity.name, info: $scope.newCity.info }
+                params: { name: $scope.cityForm.name, info: $scope.cityForm.info }
+            }
+            $scope.cityApi(req);
+            $scope.cityForm = { "name" : "", "info" : "" }
+        }
+        $scope.editCity = function () {
+            let req = {
+                method: 'PUT',
+                url: 'city/edit',
+                params: { id: $scope.cityForm.id, name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
         }
@@ -72,7 +96,9 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                         $scope.addMessage(success.data.message);
                     },
                     function (error) {
-                        $scope.addMessage(error.data.message);
+                        if (error.data.message !== "") {
+                            $scope.addMessage(error.data.message);
+                        }
                     }
                 );
         }

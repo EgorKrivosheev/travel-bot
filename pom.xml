@@ -12,7 +12,7 @@
 
 	<groupId>by.grodno.krivosheev</groupId>
 	<artifactId>travel-bot</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 
 	<name>travel-bot</name>
 	<description>Telegram bot on Spring Boot</description>
