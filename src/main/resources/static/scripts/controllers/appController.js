@@ -14,8 +14,11 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 url: 'cities'
             }).then(
                 function (success){
-                    $rootScope.cities = success.data.cities;
-                    $scope.addMessage(success.data.message);
+                    // If cities not equals cities of database then update
+                    if (!angular.equals(success.data.cities, $rootScope.cities)) {
+                        $rootScope.cities = success.data.cities;
+                        $scope.addMessage(success.data.message);
+                    }
                 },
                 function (error) {
                     if (error.data.message !== "") {
@@ -26,7 +29,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         }
         // Load
         $scope.getCities();
-        setInterval($scope.getCities, 25000);
+        setInterval($scope.getCities, 10000);
         // If main have scroll add class active-scroll(padding right less on 0.5em)
         $scope.isActiveScroll = function () {
             if (main.clientHeight < main.scrollHeight) {
@@ -61,7 +64,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
             $scope.openForm('добавления');
         }
         $scope.openEditForm = function (city) {
-            $scope.cityForm = city;
+            $scope.cityForm = angular.copy(city);
             $scope.openForm('изменения');
         }
         $scope.addCity = function () {
@@ -71,7 +74,6 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
-            $scope.getCities();
             $scope.cityForm = { "name" : "", "info" : "" }
         }
         $scope.editCity = function () {
@@ -81,7 +83,6 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { id: $scope.cityForm.id, name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
-            $scope.getCities();
         }
         $scope.deleteCity = function (id) {
             let req = {
@@ -90,17 +91,19 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
                 params: { id: id }
             }
             $scope.cityApi(req);
-            $scope.getCities();
         }
-        $scope.cityApi = function cityApi(url) {
-            cityApiService.cityApi(url)
+        $scope.cityApi = function cityApi(req) {
+            cityApiService.cityApi(req)
                 .then(
                     function (success){
                         $scope.addMessage(success.data.message);
+                        $scope.getCities();
                     },
                     function (error) {
                         if (error.data.message !== "") {
                             $scope.addMessage(error.data.message);
+                        } else {
+                            $scope.addMessage(error.data.error + " " + error.data.status + "!");
                         }
                     }
                 );

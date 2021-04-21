@@ -7,11 +7,11 @@
 
 **Deploy:** `Heroku`
 
-## Links
+# Links
 [Telegram bot], [Website]
 
 [Telegram bot]:https://t.me/travel_t_bot
 [Website]:https://travel-tbot.herokuapp.com/
 
-### License
+# License
 [MIT](https://github.com/EgorKrivosheev/travel-bot/blob/main/LICENSE)
