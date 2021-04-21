@@ -30,8 +30,8 @@
 </div>
 
 <div class="form none" ng-class="isVisibleForm">
-    <input title="Введите название города" type="text" placeholder="Название города" ng-model="cityForm.name">
-    <textarea title="Введите информацию по городу" class="custom-scroll" placeholder="Информация по городу" ng-model="cityForm.info"></textarea>
+    <input title="Введите название города" type="text" maxlength="25" placeholder="Название города" ng-model="cityForm.name">
+    <textarea title="Введите информацию по городу" maxlength="225" class="custom-scroll" placeholder="Информация по городу" ng-model="cityForm.info"></textarea>
     <div>
         <button class="btn-submit" ng-click="addCity();" ng-if="!isVisibleBtnForm">Добавить</button>
         <button class="btn-submit" ng-click="editCity();" ng-if="isVisibleBtnForm">Сохранить</button>
