@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 public class CityServiceImpl implements CityService {
-
     private final CityRepository cityRepository;
 
     public CityServiceImpl(CityRepository cityRepository) {
@@ -70,5 +69,4 @@ public class CityServiceImpl implements CityService {
             throw new EntityNotFoundException("Не найден город под №" + id);
         }
     }
-
 }

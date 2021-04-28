@@ -50,5 +50,4 @@ public class TravelBot extends TelegramLongPollingBot {
             }
         }
     }
-
 }

@@ -16,5 +16,4 @@ public class CityAnswerEntity extends AnswerEntity {
     public CityEntity getCity() {
         return city;
     }
-
 }

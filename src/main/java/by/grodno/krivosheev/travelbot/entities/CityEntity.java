@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 @Entity
 @Table(name = "CITY")
 public class CityEntity {
-
     @Id
     @Column(name = "city_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,5 +63,4 @@ public class CityEntity {
         this.name = name;
         this.info = info;
     }
-
 }

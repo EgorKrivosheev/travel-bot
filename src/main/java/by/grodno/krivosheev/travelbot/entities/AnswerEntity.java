@@ -21,5 +21,4 @@ public class AnswerEntity {
     public String getMessage() {
         return message;
     }
-
 }

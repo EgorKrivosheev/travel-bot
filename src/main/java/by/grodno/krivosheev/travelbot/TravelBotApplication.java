@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 
 @SpringBootApplication
 public class TravelBotApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(TravelBotApplication.class, args);
 	}
@@ -18,5 +17,4 @@ public class TravelBotApplication {
 	public ErrorPageRegistrar errorPageRegistrar() {
 		return registry -> registry.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/index.html"));
 	}
-
 }

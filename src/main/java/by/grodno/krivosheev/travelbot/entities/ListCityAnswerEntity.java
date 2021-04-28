@@ -18,5 +18,4 @@ public class ListCityAnswerEntity extends AnswerEntity {
     public List<CityEntity> getCities() {
         return cities;
     }
-
 }

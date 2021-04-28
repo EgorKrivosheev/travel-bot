@@ -1,7 +1,5 @@
 # Travel bot
-`Spring Boot` (Web, Data, TelegramBots)
-
-`Data` (Postgre SQL)
+`Java: 11`, `Spring Boot` (Web, Data, TelegramBots), `Data` (Postgre SQL)
 
 **Build:** `Maven`
 

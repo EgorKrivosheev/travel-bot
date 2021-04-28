@@ -48,14 +48,19 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
             }
         }
         $scope.openForm = function (str) {
-            $scope.isVisibleForm = $scope.isVisibleForm === 'none' ? '' : 'none';
+            $scope.isVisibleForm = $scope.isVisibleForm === 'none' ?
+                '' :
+                'none';
             $scope.isVisibleBtnForm = str === 'изменения';
             $scope.titleAddBtn = $scope.isVisibleForm ?
-                'Открыть форму ' + str : 'Закрыть форму ' + str;
+                'Открыть форму ' + str :
+                'Закрыть форму ' + str;
             $scope.classOpenForm = $scope.isVisibleForm ?
-                '' : 'open-form';
+                '' :
+                'open-form';
             $scope.addMessage($scope.isVisibleForm ?
-                'Закрыта форма для '+ str +'!' : 'Открыта форма для ' + str +'!');
+                'Закрыта форма для '+ str +'!' :
+                'Открыта форма для ' + str +'!');
         }
         $scope.openAddForm = function () {
             $scope.cityForm = {

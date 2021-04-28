@@ -21,7 +21,6 @@ import java.util.List;
 
 @RestController
 public class CityController {
-
     private final CityService cityService;
 
     public CityController(CityService cityService) {
@@ -127,5 +126,4 @@ public class CityController {
         return new ResponseEntity<>(new AnswerEntity(HttpStatus.INTERNAL_SERVER_ERROR, "Что-то сломалось!"),
                         HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 }
