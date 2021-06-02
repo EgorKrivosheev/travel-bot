@@ -2,6 +2,7 @@
 <html lang="ru" ng-app="travelBotApp">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Туристический телеграм бот" />
     <title>Travel bot</title>
     <link rel="canonical" href="https://travel-tbot.herokuapp.com/" />
@@ -22,27 +23,24 @@
     <meta property="og:locale" content="RU" />
 </head>
 <body ng-controller="appController">
-<div class="wrap-messages">
-    <div ng-repeat="message in messages" class="message" ng-class="message.class">
-        <div class="text" ng-bind="message.text"></div>
-        <button title="Закрыть" class="btn-cancel" ng-click="cancelMsg(this);"></button>
+    <div class="wrap-messages">
+        <div ng-repeat="message in messages" class="message" ng-class="message.class">
+            <div class="text" ng-bind="message.text"></div>
+            <button title="Закрыть" class="btn-cancel" ng-click="cancelMsg(this);"></button>
+        </div>
     </div>
-</div>
-
-<div class="form none" ng-class="isVisibleForm">
-    <input title="Введите название города" type="text" maxlength="25" placeholder="Название города" ng-model="cityForm.name">
-    <textarea title="Введите информацию по городу" maxlength="225" class="custom-scroll" placeholder="Информация по городу" ng-model="cityForm.info"></textarea>
-    <div>
-        <button class="btn-submit" ng-click="addCity();" ng-if="!isVisibleBtnForm">Добавить</button>
-        <button class="btn-submit" ng-click="editCity();" ng-if="isVisibleBtnForm">Сохранить</button>
+    <div class="form none" ng-class="isVisibleForm">
+        <input title="Введите название города" type="text" maxlength="25" placeholder="Название города" ng-model="cityForm.name">
+        <textarea title="Введите информацию по городу" maxlength="225" class="custom-scroll" placeholder="Информация по городу" ng-model="cityForm.info"></textarea>
+        <div>
+            <button class="btn-submit" ng-click="addCity();" ng-if="!isVisibleBtnForm">Добавить</button>
+            <button class="btn-submit" ng-click="editCity();" ng-if="isVisibleBtnForm">Сохранить</button>
+        </div>
     </div>
-</div>
-
     <header>
         <h1>Travel bot</h1>
         <button title="{{ titleAddBtn }}" class="btn-add" ng-class="classOpenForm" ng-click="openAddForm();"></button>
     </header>
-
     <main id="main" class="custom-scroll" ng-class="isActiveScroll();">
         <table>
             <thead>
@@ -66,15 +64,13 @@
             </tbody>
         </table>
     </main>
-
     <footer>
-        <a title="Перейти к боту" class="telegram-bot" href="https://t.me/travel_t_bot" target="_blank"></a>
+        <a title="Перейти к боту" class="telegram-bot" href="https://t.me/travel_t_bot" rel="noopener" target="_blank"></a>
         <div>🡄 Telegram</div>
         <div class="earth">🌏<br>2021</div>
         <div>GitHub 🡆</div>
-        <a title="Посмотреть код на github" class="github" href="https://github.com/EgorKrivosheev/travel-bot" target="_blank"></a>
+        <a title="Посмотреть код на github" class="github" href="https://github.com/EgorKrivosheev/travel-bot" rel="noopener" target="_blank"></a>
     </footer>
-
 </body>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>

@@ -8,12 +8,12 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
             "name" : "",
             "info" : ""
         };
-        $scope.getCities = function getCities() {
+        $scope.getCities = function () {
             cityApiService.cityApi({
                 method: 'GET',
-                url: 'cities'
+                url: 'API/cities'
             }).then(
-                function (success){
+                function (success) {
                     // If cities not equals cities of database then update
                     if (!angular.equals(success.data.cities, $rootScope.cities)) {
                         $rootScope.cities = success.data.cities;
@@ -66,7 +66,10 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
             $scope.cityForm = {
                 "name" : "", "info" : ""
             }
-            $scope.openForm('добавления');
+            // If open edit form
+            $scope.openForm($scope.isVisibleBtnForm ?
+                'изменения' :
+                'добавления');
         }
         $scope.openEditForm = function (city) {
             $scope.cityForm = angular.copy(city);
@@ -75,7 +78,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         $scope.addCity = function () {
             let req = {
                 method: 'POST',
-                url: 'city/add',
+                url: 'API/city/add',
                 params: { name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
@@ -84,7 +87,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         $scope.editCity = function () {
             let req = {
                 method: 'PUT',
-                url: 'city/edit',
+                url: 'API/city/edit',
                 params: { id: $scope.cityForm.id, name: $scope.cityForm.name, info: $scope.cityForm.info }
             }
             $scope.cityApi(req);
@@ -92,7 +95,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         $scope.deleteCity = function (id) {
             let req = {
                 method: 'DELETE',
-                url: 'city/delete',
+                url: 'API/city/delete',
                 params: { id: id }
             }
             $scope.cityApi(req);
@@ -100,7 +103,7 @@ _TRAVEL_BOT_APP.controller("appController", ['$scope', 'cityApiService', '$rootS
         $scope.cityApi = function cityApi(req) {
             cityApiService.cityApi(req)
                 .then(
-                    function (success){
+                    function (success) {
                         $scope.addMessage(success.data.message);
                         $scope.getCities();
                     },

@@ -18,5 +18,4 @@ _TRAVEL_BOT_APP.service("cityApiService", ['$http', '$q', function ($http, $q) {
             );
         return defer.promise;
     }
-
 }]);

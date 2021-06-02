@@ -5,6 +5,7 @@ import by.grodno.krivosheev.travelbot.entities.CityEntity;
 import java.util.List;
 
 public interface CityService {
+    
     /**
      * Get list all cities
      * @return a {@code List} of elements {@code CityEntity}
