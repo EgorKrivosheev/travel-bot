@@ -4,6 +4,7 @@ import by.grodno.krivosheev.travelbot.entities.CityEntity;
 import by.grodno.krivosheev.travelbot.repositories.CityRepository;
 
 import org.springframework.dao.DuplicateKeyException;
+
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;

@@ -1,14 +1,16 @@
-package by.grodno.krivosheev.travelbot.entities;
+package by.grodno.krivosheev.travelbot.responses;
+
+import by.grodno.krivosheev.travelbot.entities.CityEntity;
 
 import org.springframework.http.HttpStatus;
 
 /**
  * This class it format json the response a server
  */
-public class CityAnswerEntity extends AnswerEntity {
+public class CityAnswerResponse extends AnswerResponse {
     private final CityEntity city;
 
-    public CityAnswerEntity(HttpStatus code, String message, CityEntity object) {
+    public CityAnswerResponse(HttpStatus code, String message, CityEntity object) {
         super(code, message);
         this.city = object;
     }
